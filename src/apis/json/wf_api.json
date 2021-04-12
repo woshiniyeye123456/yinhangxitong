@@ -1,0 +1,435 @@
+{
+  "apis": [
+    {
+      "name": "saveDefine",
+      "slot": "saveDefine",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "desc": "流程标题",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "updated_by",
+          "type": "string",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "updater_name",
+          "type": "string",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "define",
+          "type": "string",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "delDefine",
+      "slot": "delDefine",
+      "disabled": false,
+      "validate": true,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "workflow",
+      "slot": "getDefine",
+      "disabled": false,
+      "validate": true,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "saveProject",
+      "slot": "saveProject",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "desc": "项目标题",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "desc": "项目描述",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "parent",
+          "type": "number",
+          "desc": "父项目ID（以便未来支持多级项目）",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "created_by",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "creator_name",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "data",
+          "type": "obj",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "projects",
+      "slot": "getProjects",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "parent",
+          "type": "number",
+          "desc": "父项目ID（以便未来支持多级项目）",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "created_by",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "delProject",
+      "slot": "delProject",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "项目ID",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "projectData",
+      "slot": "getProjectData",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "项目ID",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "delDefine",
+      "slot": "delDefine",
+      "disabled": false,
+      "validate": true,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "workflow",
+      "slot": "getDefine",
+      "disabled": false,
+      "validate": true,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "start",
+      "slot": "start",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "workflow_id",
+          "type": "number",
+          "desc": "流程定义ID",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "data",
+          "type": "obj",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "tasks",
+      "slot": "getTasks",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "workflow_id",
+          "type": "number",
+          "desc": "流程实例ID",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "actor",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "paging",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "workflows",
+      "slot": "getWorkflows",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "status",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "creator",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        },
+        {
+          "name": "paging",
+          "type": "string",
+          "desc": "",
+          "required": false,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "delWorkflow",
+      "slot": "delWorkflow",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "id",
+          "type": "number",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "saveTask",
+      "slot": "saveTask",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "task_id",
+          "type": "number",
+          "desc": "任务ID",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "actor",
+          "type": "string",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "data",
+          "type": "obj",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "submitTask",
+      "slot": "submitTask",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "task_id",
+          "type": "number",
+          "desc": "任务ID",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "actor",
+          "type": "string",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "data",
+          "type": "obj",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    },
+    {
+      "name": "view",
+      "slot": "getView",
+      "disabled": false,
+      "validate": false,
+      "method": "POST",
+      "params": [
+        {
+          "name": "workflow_id",
+          "type": "number",
+          "desc": "流程实例ID",
+          "required": true,
+          "validator": ""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "desc": "",
+          "required": true,
+          "validator": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3188 @@
+{
+  "queries": [
+    {
+      "key": "account",
+      "desc": "用户",
+      "from": "Account AS a",
+      "joins": [
+        "AccountRoleRel AS arr ON a.id = arr.account_id",
+        "Role AS r ON arr.role_id = r.id"
+      ],
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "a.ID"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "a.Status"
+        },
+        {
+          "name": "role_name",
+          "desc": "角色名",
+          "type": "string",
+          "required": false,
+          "field": "r.Name"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "a.ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.Name"
+        },
+        {
+          "name": "real_name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "a.Status"
+        },
+        {
+          "name": "created_time",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "a.CreatedTime"
+        },
+        {
+          "name": "department_id",
+          "desc": "部门ID",
+          "type": "number",
+          "required": false,
+          "field": "a.DepartmentID"
+        },
+        {
+          "name": "department_id",
+          "desc": "部门ID",
+          "type": "number",
+          "required": false,
+          "field": "a.DepartmentID"
+        },
+        {
+          "name": "level",
+          "desc": "能力等级",
+          "type": "number",
+          "required": false,
+          "field": "a.DepartmentID"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryAccount"
+      }
+    },
+    {
+      "key": "account_of_department",
+      "from": "Account AS a",
+      "joins": [
+        "DepartmentAccountRel AS da ON da.account_id = a.id",
+        "Department AS d ON da.department_id = d.id",
+        "AccountRoleRel AS arr ON a.id = arr.account_id",
+        "Role AS r ON r.id = arr.role_id"
+      ],
+      "conds": [
+        {
+          "name": "path",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "d.Path"
+        },
+        {
+          "name": "department_id",
+          "type": "number",
+          "required": false,
+          "field": "da.DepartmentID"
+        },
+        {
+          "name": "role_name",
+          "type": "string",
+          "required": false,
+          "field": "r.Name"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "da.ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.Name"
+        },
+        {
+          "name": "real_name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "department_name",
+          "type": "string",
+          "field": "d.Name"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "field": "da.Status"
+        },
+        {
+          "name": "deadline",
+          "type": "string",
+          "field": "da.Deadline"
+        },
+        {
+          "name": "account_id",
+          "type": "number",
+          "field": "a.ID"
+        },
+        {
+          "name": "level",
+          "type": "number",
+          "field": "a.Level"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryAccountOfDepartment"
+      }
+    },
+    {
+      "key": "organization",
+      "desc": "所属组织",
+      "from": "Organization",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "CreatedTime"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "CreatedTime"
+        }
+      ]
+    },
+    {
+      "key": "department",
+      "desc": "部门",
+      "from": "Department",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "CreatedTime"
+        },
+        {
+          "name": "parent_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ParentID"
+        },
+        {
+          "name": "path",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryDepartment"
+      }
+    },
+    {
+      "key": "role",
+      "desc": "角色",
+      "from": "Role",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "datetime",
+          "required": false,
+          "field": "CreatedTime",
+          "default": "$now"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryRole"
+      }
+    },
+    {
+      "key": "baseline_library",
+      "desc": "基线库",
+      "from": "BaselineLibrary",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "coding",
+          "desc": "编码",
+          "type": "string",
+          "required": false,
+          "field": "Coding"
+        },
+        {
+          "name": "note",
+          "desc": "备注",
+          "type": "string",
+          "required": false,
+          "field": "Note"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建人",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "Status"
+        },
+        {
+          "name": "updated_time",
+          "desc": "更新时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "修改人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        },
+        {
+          "name": "latest",
+          "desc": "",
+          "type": "bool",
+          "required": false,
+          "field": "Latest"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "GroupID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Version"
+        },
+        {
+          "name": "status",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Status"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "coding",
+          "desc": "编码",
+          "type": "string",
+          "required": false,
+          "field": "Coding"
+        },
+        {
+          "name": "note",
+          "desc": "备注",
+          "type": "string",
+          "required": false,
+          "field": "Note"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建人",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "Status"
+        },
+        {
+          "name": "updated_time",
+          "desc": "更新时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "修改人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        },
+        {
+          "name": "latest",
+          "desc": "",
+          "type": "bool",
+          "required": false,
+          "field": "Latest"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "GroupID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Version"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryBaselineLibrary"
+      }
+    },
+    {
+      "key": "baseline_view",
+      "desc": "基线视图",
+      "from": "BaselineView",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建人",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "Status"
+        },
+        {
+          "name": "updated_time",
+          "desc": "更新时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "修改人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        },
+        {
+          "name": "latest",
+          "desc": "",
+          "type": "bool",
+          "required": false,
+          "field": "Latest"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "GroupID"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建人",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "Status"
+        },
+        {
+          "name": "updated_time",
+          "desc": "更新时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "修改人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        },
+        {
+          "name": "latest",
+          "desc": "",
+          "type": "bool",
+          "required": false,
+          "field": "Latest"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "GroupID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Version"
+        },
+        {
+          "name": "note",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Note"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        },
+        {
+          "name": "files",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Files"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryBaselineView"
+      }
+    },
+    {
+      "key": "software_platform",
+      "desc": "软件平台",
+      "from": "SoftwarePlatform",
+      "pass": true,
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "coding",
+          "desc": "编码",
+          "type": "string",
+          "required": false,
+          "field": "Coding"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "Status"
+        }
+      ]
+    },
+    {
+      "key": "safety_standard",
+      "desc": "",
+      "from": "SafetyStandard AS ss",
+      "joins": [
+        "SoftwarePlatform AS sp ON ss.soft_platform_id = sp.id",
+        "SecurityScene AS s ON ss.security_scene_id = s.id",
+        "Account AS a ON a.id = ss.creator_id",
+        "Account AS a1 ON a1.id = ss.updated_by_id",
+        "SafetyStandardRel AS ssr ON ssr.safety_standard_id = ss.id",
+        "Baseline AS bs ON bs.id = ssr.baseline_id",
+        "DefenseTest AS dt ON dt.baseline_id = bs.id",
+        "DefenseTestSoftPlatRel AS dts ON dts.defense_test_id = dt.id"
+      ],
+      "conds": [
+        {
+          "name": "software_platform_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "dts.SoftwarePlatformID"
+        },
+        {
+          "name": "baseline_latest",
+          "type": "number",
+          "required": false,
+          "field": "bs.Latest"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ss.GroupID"
+        },
+        {
+          "name": "latest",
+          "type": "bool",
+          "required": false,
+          "field": "ss.Latest"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "field": "ss.Name"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "field": "ss.Status"
+        },
+        {
+          "name": "creator",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "updated_by",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        },
+        {
+          "name": "id",
+          "type": "number",
+          "required": false,
+          "field": "ss.ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ss.ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "ss.Name"
+        },
+        {
+          "name": "soft_platform_id",
+          "desc": "使用平台",
+          "type": "number",
+          "required": false,
+          "field": "ss.SoftPlatformID"
+        },
+        {
+          "name": "soft_platform",
+          "desc": "使用平台",
+          "type": "string",
+          "required": false,
+          "field": "sp.Name"
+        },
+        {
+          "name": "security_scene_id",
+          "desc": "安全平台",
+          "type": "number",
+          "required": false,
+          "field": "ss.SecuritySceneID"
+        },
+        {
+          "name": "security_scene",
+          "desc": "安全场景",
+          "type": "string",
+          "required": false,
+          "field": "s.Name"
+        },
+        {
+          "name": "note",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "ss.Note"
+        },
+        {
+          "name": "version",
+          "desc": "版本号",
+          "type": "string",
+          "required": false,
+          "field": "ss.Version"
+        },
+        {
+          "name": "creator_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ss.CreatorID"
+        },
+        {
+          "name": "creator",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "updated_by",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "ss.CreatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ss.UpdatedByID"
+        },
+        {
+          "name": "updated_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "ss.UpdatedTime"
+        },
+        {
+          "name": "latest",
+          "desc": "",
+          "type": "bool",
+          "required": false,
+          "field": "ss.Latest"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ss.GroupID"
+        },
+        {
+          "name": "status",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "ss.Status"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ss.Source"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQuerySafetyStandard"
+      }
+    },
+    {
+      "key": "baseline",
+      "desc": "基线",
+      "from": "Baseline AS b",
+      "joins": [
+        "Account AS a ON b.creator_id = a.id",
+        "Account AS a1 ON b.updated_by_id = a1.id",
+        "SecurityScene AS s ON s.id = b.security_scene_id",
+        "BaselinePropertyLabelRel AS bp ON b.id = bp.baseline_id",
+        "DefenseTest AS d ON d.baseline_id = b.id",
+        "DefenseTestSoftPlatRel AS dts ON dts.defense_test_id = d.id"
+      ],
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "b.ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "field": "b.Name"
+        },
+        {
+          "name": "software_platform_id",
+          "type": "number",
+          "required": false,
+          "field": "dts.SoftwarePlatformID"
+        },
+        {
+          "name": "number",
+          "type": "string",
+          "required": false,
+          "field": "Number"
+        },
+        {
+          "name": "security_scene_id",
+          "desc": "安全场景",
+          "type": "number",
+          "required": false,
+          "field": "b.SecuritySceneID"
+        },
+        {
+          "name": "risk_level",
+          "desc": "风险等级",
+          "type": "string",
+          "required": false,
+          "field": "RiskLevel"
+        },
+        {
+          "name": "creator",
+          "desc": "创建者",
+          "type": "string",
+          "field": "a.RealName"
+        },
+        {
+          "name": "updated_by",
+          "desc": "更新人",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "b.Status"
+        },
+        {
+          "name": "automation",
+          "desc": "自动化",
+          "type": "string",
+          "required": false,
+          "field": "Automation"
+        },
+        {
+          "name": "start_time",
+          "desc": "修改时间",
+          "type": "string",
+          "required": false,
+          "field": "updated_time"
+        },
+        {
+          "name": "end_time",
+          "desc": "修改时间",
+          "type": "string",
+          "required": false,
+          "field": "updated_time"
+        },
+        {
+          "name": "property_label_id",
+          "desc": "标签ID",
+          "type": "string",
+          "required": false,
+          "field": "bp.PropertyLabelID"
+        },
+        {
+          "name": "latest",
+          "type": "bool",
+          "required": false,
+          "field": "Latest"
+        },
+        {
+          "name": "source",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "b.ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "field": "b.Name"
+        },
+        {
+          "name": "number",
+          "type": "string",
+          "required": false,
+          "field": "Number"
+        },
+        {
+          "name": "security_scene_id",
+          "desc": "安全场景",
+          "type": "number",
+          "required": false,
+          "field": "SecuritySceneID"
+        },
+        {
+          "name": "security_scene",
+          "type": "string",
+          "field": "s.Name"
+        },
+        {
+          "name": "security_description",
+          "desc": "内容描述",
+          "type": "string",
+          "required": false,
+          "field": "SecurityDescription"
+        },
+        {
+          "name": "version",
+          "desc": "版本号",
+          "type": "string",
+          "required": false,
+          "field": "Version"
+        },
+        {
+          "name": "risk_level",
+          "desc": "风险等级",
+          "type": "string",
+          "required": false,
+          "field": "RiskLevel"
+        },
+        {
+          "name": "risk_description",
+          "desc": "风险描述",
+          "type": "string",
+          "required": false,
+          "field": "RiskDescription"
+        },
+        {
+          "name": "automation",
+          "desc": "自动化",
+          "type": "string",
+          "required": false,
+          "field": "Automation"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建者ID",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "creator",
+          "type": "string",
+          "field": "a.RealName"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "b.CreatedTime"
+        },
+        {
+          "name": "updated_time",
+          "desc": "最新修改时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "更新人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        },
+        {
+          "name": "updated_by",
+          "type": "string",
+          "field": "a1.RealName"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "b.Status"
+        },
+        {
+          "name": "group_id",
+          "type": "number",
+          "required": false,
+          "field": "GroupID"
+        },
+        {
+          "name": "source",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryBaseline"
+      }
+    },
+    {
+      "key": "property_label",
+      "desc": "属性标签",
+      "from": "PropertyLabel",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "path",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        },
+        {
+          "name": "parent_id",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "ParentID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "parent_id",
+          "desc": "上级ID",
+          "type": "number",
+          "required": false,
+          "field": "ParentID"
+        },
+        {
+          "name": "path",
+          "desc": "路径",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        }
+      ],
+      "hook": {
+        "params": [
+          {
+            "name": "is_cull",
+            "type": "bool",
+            "required": false
+          }
+        ],
+        "handler": "AfterQueryPropertyLabel"
+      }
+    },
+    {
+      "key": "security_scene",
+      "desc": "安全场景",
+      "from": "SecurityScene",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "coding",
+          "desc": "编码",
+          "type": "string",
+          "required": false,
+          "field": "Coding"
+        },
+        {
+          "name": "status",
+          "desc": "状态",
+          "type": "string",
+          "required": false,
+          "field": "Status"
+        }
+      ]
+    },
+    {
+      "key": "baseline_version",
+      "desc": "",
+      "from": "BaselineVersion AS b",
+      "joins": [
+        "Account AS a ON b.creator_id = a.id"
+      ],
+      "conds": [
+        {
+          "name": "baseline_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "BaselineID"
+        },
+        {
+          "name": "group_id",
+          "type": "number",
+          "required": false,
+          "field": "GroupID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "b.ID"
+        },
+        {
+          "name": "baseline_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "b.BaselineID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Version"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "b.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "creator",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "b.GroupID"
+        }
+      ]
+    },
+    {
+      "key": "project",
+      "desc": "项目",
+      "from": "Project AS p",
+      "joins": [
+        "Organization AS o ON p.organization_id = o.id",
+        "AuthorizationGroup  AS ag ON p.authorization_group_id = ag.id",
+        "Account AS a ON  p.creator_id = a.id"
+      ],
+      "conds": [
+        {
+          "name": "name",
+          "desc": "项目名称",
+          "type": "string",
+          "required": false,
+          "field": "p.Name"
+        },
+        {
+          "name": "technology_platform",
+          "desc": "技术平台",
+          "type": "string",
+          "required": false,
+          "field": "p.TechnologyPlatform"
+        },
+        {
+          "name": "organization",
+          "desc": "所属组织",
+          "type": "string",
+          "required": false,
+          "field": "o.Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "p.CreatedTime"
+        },
+        {
+          "name": "creator",
+          "desc": "创建人",
+          "type": "string",
+          "required": false,
+          "field": "p.Creator"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建人",
+          "type": "number",
+          "required": false,
+          "field": "p.CreatorID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "p.ID"
+        },
+        {
+          "name": "name",
+          "desc": "项目名称",
+          "type": "string",
+          "required": false,
+          "field": "p.Name"
+        },
+        {
+          "name": "technology_platform",
+          "desc": "技术平台",
+          "type": "string",
+          "required": false,
+          "field": "p.TechnologyPlatform"
+        },
+        {
+          "name": "organization_id",
+          "desc": "所属组织",
+          "type": "number",
+          "required": false,
+          "field": "p.OrganizationID"
+        },
+        {
+          "name": "organization",
+          "type": "string",
+          "required": false,
+          "field": "o.Name"
+        },
+        {
+          "name": "authorization_group",
+          "desc": "授权组",
+          "type": "string",
+          "required": false,
+          "field": "ag.Name"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "p.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建人",
+          "type": "number",
+          "required": false,
+          "field": "p.CreatorID"
+        }
+      ]
+    },
+    {
+      "key": "security_component",
+      "desc": "",
+      "from": "SecurityComponent AS  s",
+      "joins": [
+        "SoftwarePlatform AS sp ON s.software_platform_id = sp.id",
+        "Account AS a ON s.creator_id = a.id",
+        "Account AS a1 ON s.updated_by_id = a1.id",
+        "ComponentLibraryRel AS cl ON cl.component_id = s.id",
+        "SecurityComponentLabelRel AS scl ON scl.security_component_id = s.id"
+      ],
+      "conds": [
+        {
+          "name": "software_platform_id",
+          "type": "number",
+          "required": false,
+          "field": "s.SoftwarePlatformID"
+        },
+        {
+          "name": "version",
+          "desc": "版本",
+          "type": "string",
+          "required": false,
+          "field": "s.Version"
+        },
+        {
+          "name": "component_library_id",
+          "desc": "组件库ID",
+          "type": "number",
+          "required": false,
+          "field": "cl.ComponentLibraryID"
+        },
+        {
+          "name": "component_library",
+          "desc": "组件库ID",
+          "type": "string",
+          "required": false,
+          "field": "cl.ComponentLibraryID"
+        },
+        {
+          "name": "component_source",
+          "desc": "组件来源",
+          "type": "string",
+          "required": false,
+          "field": "s.ComponentSource"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.CreatedTime"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.Name"
+        },
+        {
+          "name": "updated_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.UpdatedTime"
+        },
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.ID"
+        },
+        {
+          "name": "label_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "scl.ComponentLabelID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.ID"
+        },
+        {
+          "name": "component_library_rel",
+          "type": "number",
+          "field": "cl.ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.Name"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Version"
+        },
+        {
+          "name": "software_platform_id",
+          "desc": "软件平台",
+          "type": "number",
+          "required": false,
+          "field": "SoftwarePlatformID"
+        },
+        {
+          "name": "software_platform",
+          "desc": "软件平台",
+          "type": "string",
+          "required": false,
+          "field": "sp.Name"
+        },
+        {
+          "name": "component_source",
+          "desc": "组件来源",
+          "type": "string",
+          "required": false,
+          "field": "ComponentSource"
+        },
+        {
+          "name": "functional_overview",
+          "desc": "功能概述",
+          "type": "string",
+          "required": false,
+          "field": "FunctionalOverview"
+        },
+        {
+          "name": "function_description",
+          "desc": "功能描述",
+          "type": "string",
+          "required": false,
+          "field": "FunctionDescription"
+        },
+        {
+          "name": "documentation",
+          "desc": "相关文档",
+          "type": "string",
+          "required": false,
+          "field": "Documentation"
+        },
+        {
+          "name": "package",
+          "desc": "程序包",
+          "type": "string",
+          "required": false,
+          "field": "Package"
+        },
+        {
+          "name": "resource",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Resource"
+        },
+        {
+          "name": "attachment",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Attachment"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "s.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建人",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "creator",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "updated_time",
+          "desc": "更新时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "更新人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        },
+        {
+          "name": "updated_by",
+          "desc": "更新人",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        },
+        {
+          "name": "instructions_for_use",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "InstructionsForUse"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.Source"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQuerySecurityComponent"
+      }
+    },
+    {
+      "key": "component_library",
+      "desc": "组件库",
+      "from": "ComponentLibrary AS cl",
+      "joins": [
+        "Account AS a ON cl.creator_id = a.id",
+        "Account AS a1 ON cl.updated_by_id = a1.id"
+      ],
+      "conds": [
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "cl.Name"
+        },
+        {
+          "name": "version",
+          "desc": "版本",
+          "type": "string",
+          "required": false,
+          "field": "cl.Version"
+        },
+        {
+          "name": "created_time",
+          "desc": "登记时间",
+          "type": "string",
+          "required": false,
+          "field": "cl.CreatedTime"
+        },
+        {
+          "name": "updated_time",
+          "desc": "编辑时间",
+          "type": "string",
+          "required": false,
+          "field": "cl.UpdatedTime"
+        },
+        {
+          "name": "creator",
+          "desc": "创建者",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "updated_by",
+          "desc": "编辑时间",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "cl.ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "cl.Name"
+        },
+        {
+          "name": "version",
+          "desc": "版本",
+          "type": "string",
+          "required": false,
+          "field": "cl.Version"
+        },
+        {
+          "name": "source",
+          "desc": "来源",
+          "type": "string",
+          "required": false,
+          "field": "Source"
+        },
+        {
+          "name": "created_time",
+          "desc": "登记时间",
+          "type": "string",
+          "required": false,
+          "field": "cl.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "登记人",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "updated_time",
+          "desc": "编辑时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "编辑人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryComponentLibrary"
+      }
+    },
+    {
+      "key": "component_label",
+      "desc": "",
+      "from": "ComponentLabel",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        }
+      ]
+    },
+    {
+      "key": "circuit",
+      "desc": "流程库",
+      "from": "Circuit AS c",
+      "joins": [
+        "Account AS a ON c.creator_id = a.id",
+        "Account AS a1 ON c.updated_by_id = a1.id"
+      ],
+      "conds": [
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "c.Name"
+        },
+        {
+          "name": "creator",
+          "desc": "创建者",
+          "type": "number",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "c.CreatedTime"
+        },
+        {
+          "name": "updated_by",
+          "desc": "最后修改者",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        },
+        {
+          "name": "updated_time",
+          "desc": "修改时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "source",
+          "desc": "修改时间",
+          "type": "string",
+          "required": false,
+          "field": "Source"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "c.ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "c.Name"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建者",
+          "type": "number",
+          "required": false,
+          "field": "c.CreatorID"
+        },
+        {
+          "name": "creator",
+          "desc": "创建者",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "c.CreatedTime"
+        },
+        {
+          "name": "updated_by",
+          "desc": "最后修改者",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        },
+        {
+          "name": "updated_time",
+          "desc": "修改时间",
+          "type": "string",
+          "required": false,
+          "field": "c.UpdatedTime"
+        },
+        {
+          "name": "version",
+          "desc": "版本",
+          "type": "string",
+          "required": false,
+          "field": "c.Version"
+        },
+        {
+          "name": "nodes",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Nodes"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Source"
+        },
+        {
+          "name": "external_system_id",
+          "type": "number",
+          "required": false,
+          "field": "ExternalSystemID"
+        },
+        {
+          "name": "automate",
+          "type": "string",
+          "required": false,
+          "field": "Automate"
+        }
+      ]
+    },
+    {
+      "key": "authorization_group",
+      "desc": "授权组",
+      "from": "AuthorizationGroup",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "expiration_date",
+          "desc": "有效期",
+          "type": "string",
+          "required": false,
+          "field": "ExpirationDate"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryAuthorizationGroup"
+      }
+    },
+    {
+      "key":"external_system",
+      "desc":"外部系统",
+      "from":"ExternalSystem",
+      "conds":[
+      ],
+      "dims":[
+        {
+          "name":"id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ID"
+        },
+        {
+          "name":"name",
+          "desc":"系统名称",
+          "type":"string",
+          "required":false,
+          "field":"Name"
+        },
+        {
+          "name":"des",
+          "desc":"string",
+          "type":"string",
+          "required":false,
+          "field":"Des"
+        },
+        {
+          "name":"code",
+          "desc":"编码",
+          "type":"string",
+          "required":false,
+          "field":"Code"
+        },
+        {
+          "name":"script_lang",
+          "desc":"脚本语言",
+          "type":"string",
+          "required":false,
+          "field":"ScriptLang"
+        },
+        {
+          "name":"script",
+          "desc":"string",
+          "type":"string",
+          "required":false,
+          "field":"Script"
+        },
+        {
+          "name":"status",
+          "desc":"状态",
+          "type":"string",
+          "required":false,
+          "field":"Status"
+        },
+        {
+          "name":"created_time",
+          "desc":"创建时间",
+          "type":"string",
+          "required":false,
+          "field":"CreatedTime"
+        },
+        {
+          "name":"port_interval",
+          "desc":"端口区间",
+          "type":"string",
+          "required":false,
+          "field":"PortInterval"
+        }
+      ]
+    },
+    {
+      "key": "loophole_category",
+      "desc": "漏洞类别",
+      "from": "LoopholeCategory",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "path",
+          "desc": "路径",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        },
+        {
+          "name": "parent_id",
+          "desc": "上级ID",
+          "type": "number",
+          "required": false,
+          "field": "ParentID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "path",
+          "desc": "路径",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        },
+        {
+          "name": "parent_id",
+          "desc": "上级ID",
+          "type": "number",
+          "required": false,
+          "field": "ParentID"
+        }
+      ],
+      "hook": {
+        "params": [
+          {
+            "name": "is_cull",
+            "type": "bool",
+            "required": false
+          }
+        ],
+        "handler": "AfterQueryLoopholeCategory"
+      }
+    },
+    {
+      "key": "loophole_label",
+      "desc": "标签",
+      "from": "LoopholeLabel",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        }
+      ]
+    },
+    {
+      "key": "loophole",
+      "desc": "漏洞",
+      "from": "Loophole AS l",
+      "joins": [
+        "LoopholeCategory AS lc ON l.category_id = l.id"
+      ],
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "l.ID"
+        },
+        {
+          "name": "number",
+          "desc": "编号",
+          "type": "string",
+          "required": false,
+          "field": "l.Number"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "l.ID"
+        },
+        {
+          "name": "number",
+          "desc": "编号",
+          "type": "string",
+          "required": false,
+          "field": "l.Number"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "l.Name"
+        },
+        {
+          "name": "harm_level",
+          "desc": "危害登记",
+          "type": "string",
+          "required": false,
+          "field": "l.HarmLevel"
+        },
+        {
+          "name": "category_id",
+          "desc": "类别",
+          "type": "number",
+          "required": false,
+          "field": "l.CategoryID"
+        },
+        {
+          "name": "category",
+          "desc": "类别",
+          "type": "number",
+          "required": false,
+          "field": "lc.Name"
+        },
+        {
+          "name": "risk_description",
+          "desc": "风险描述",
+          "type": "string",
+          "required": false,
+          "field": "RiskDescription"
+        },
+        {
+          "name": "discovery_process_des",
+          "desc": "发现过程描述",
+          "type": "string",
+          "required": false,
+          "field": "DiscoveryProcessDes"
+        },
+        {
+          "name": "operation_method_description",
+          "desc": "操作描述",
+          "type": "string",
+          "required": false,
+          "field": "OperationMethodDescription"
+        },
+        {
+          "name": "instructions_for_using_tools",
+          "desc": "使用工具说明",
+          "type": "string",
+          "required": false,
+          "field": "InstructionsForUsingTools"
+        },
+        {
+          "name": "solution",
+          "desc": "解决方案",
+          "type": "string",
+          "required": false,
+          "field": "Solution"
+        },
+        {
+          "name": "baseline_id",
+          "desc": "基线",
+          "type": "number",
+          "required": false,
+          "field": "BaselineID"
+        },
+        {
+          "name": "instructions_for_use",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "InstructionsForUse"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        }
+      ]
+    },
+    {
+      "key": "select_loophole",
+      "desc": "漏洞",
+      "from": "Loophole AS l",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "l.ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "l.ID"
+        },
+        {
+          "name": "number",
+          "desc": "编号",
+          "type": "string",
+          "required": false,
+          "field": "l.Number"
+        },
+        {
+          "name": "name",
+          "desc": "名称",
+          "type": "string",
+          "required": false,
+          "field": "l.Name"
+        },
+        {
+          "name": "harm_level",
+          "desc": "危害登记",
+          "type": "string",
+          "required": false,
+          "field": "l.HarmLevel"
+        },
+        {
+          "name": "category_id",
+          "desc": "类别",
+          "type": "number",
+          "required": false,
+          "field": "l.CategoryID"
+        },
+        {
+          "name": "risk_description",
+          "desc": "风险描述",
+          "type": "string",
+          "required": false,
+          "field": "RiskDescription"
+        },
+        {
+          "name": "discovery_process_des",
+          "desc": "发现过程描述",
+          "type": "string",
+          "required": false,
+          "field": "DiscoveryProcessDes"
+        },
+        {
+          "name": "operation_method_description",
+          "desc": "操作描述",
+          "type": "string",
+          "required": false,
+          "field": "OperationMethodDescription"
+        },
+        {
+          "name": "instructions_for_using_tools",
+          "desc": "使用工具说明",
+          "type": "string",
+          "required": false,
+          "field": "InstructionsForUsingTools"
+        },
+        {
+          "name": "solution",
+          "desc": "解决方案",
+          "type": "string",
+          "required": false,
+          "field": "Solution"
+        },
+        {
+          "name": "baseline_id",
+          "desc": "基线",
+          "type": "number",
+          "required": false,
+          "field": "BaselineID"
+        },
+        {
+          "name": "source",
+          "desc": "基线",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryLoophole"
+      }
+    },
+    {
+      "key": "tool",
+      "desc": "",
+      "from": "Tool",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "type",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Type"
+        },
+        {
+          "name": "url",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Url"
+        },
+        {
+          "name": "path",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "type",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Type"
+        },
+        {
+          "name": "url",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Url"
+        },
+        {
+          "name": "path",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        },
+        {
+          "name": "instructions_for_use",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "InstructionsForUse"
+        },
+        {
+          "name": "source",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "Source"
+        }
+      ]
+    },
+    {
+      "key": "data_import",
+      "desc": "数据导入",
+      "from": "DataImport AS d",
+      "joins": [
+        "Account AS a ON d.creator_id = a.id"
+      ],
+      "conds": [
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "d.ID"
+        },
+        {
+          "name": "creator_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "d.CreatorID"
+        },
+        {
+          "name": "creator",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "d.CreatedTime"
+        },
+        {
+          "name": "status",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "d.Status"
+        },
+        {
+          "name": "description",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "d.Description"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "d.Name"
+        },
+        {
+          "name": "path",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        }
+      ]
+    },
+    {
+      "key": "data_library",
+      "desc": "资料库",
+      "from": "DataLibrary AS d",
+      "joins": [
+        "Account AS a ON d.creator_id = a.id",
+        "Account AS a1 ON d.updated_by_id = a1.id"
+      ],
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "d.ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "d.ID"
+        },
+        {
+          "name": "title",
+          "desc": "标题",
+          "type": "string",
+          "required": false,
+          "field": "d.Title"
+        },
+        {
+          "name": "version",
+          "desc": "版本号",
+          "type": "string",
+          "required": false,
+          "field": "d.Version"
+        },
+        {
+          "name": "created_time",
+          "desc": "创建时间",
+          "type": "string",
+          "required": false,
+          "field": "d.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "创建者",
+          "type": "number",
+          "required": false,
+          "field": "d.CreatorID"
+        },
+        {
+          "name": "creator",
+          "desc": "创建者",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "updated_by_id",
+          "desc": "编辑人",
+          "type": "number",
+          "required": false,
+          "field": "UpdatedByID"
+        },
+        {
+          "name": "updated_by",
+          "desc": "编辑人",
+          "type": "string",
+          "required": false,
+          "field": "a1.RealName"
+        },
+        {
+          "name": "updated_time",
+          "desc": "更新时间",
+          "type": "string",
+          "required": false,
+          "field": "UpdatedTime"
+        },
+        {
+          "name": "content",
+          "desc": "内容",
+          "type": "string",
+          "required": false,
+          "field": "Content"
+        },
+        {
+          "name": "path",
+          "desc": "路径",
+          "type": "string",
+          "required": false,
+          "field": "Path"
+        },
+        {
+          "name": "source",
+          "desc": "路径",
+          "type": "number",
+          "required": false,
+          "field": "d.Source"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryDataLibrary"
+      }
+    },
+    {
+      "key": "check_tool",
+      "desc": "",
+      "from": "CheckTool",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        },
+        {
+          "name": "url",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Url"
+        }
+      ]
+    },
+    {
+      "key": "check_tool_rule",
+      "desc": "",
+      "from": "CheckToolRule",
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "tool_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ToolID"
+        },
+        {
+          "name": "code",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Code"
+        },
+        {
+          "name": "rule",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Rule"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ID"
+        },
+        {
+          "name": "tool_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "ToolID"
+        },
+        {
+          "name": "code",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Code"
+        },
+        {
+          "name": "rule",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Rule"
+        },
+        {
+          "name": "name",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Name"
+        }
+      ]
+    },
+    {
+      "key": "safety_standard_version",
+      "desc": "",
+      "from": "SafetyStandardVersion AS s",
+      "joins": [
+        "Account AS a ON s.creator_id = a.id"
+      ],
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.ID"
+        },
+        {
+          "name": "safety_standard_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.SafetyStandardID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.Version"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.CreatorID"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.GroupID"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.ID"
+        },
+        {
+          "name": "safety_standard_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.SafetyStandardID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.Version"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "s.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.CreatorID"
+        },
+        {
+          "name": "creator",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "s.GroupID"
+        }
+      ]
+    },
+    {
+      "key": "baseline_view_version",
+      "desc": "",
+      "from": "BaselineViewVersion AS bv",
+      "joins": [
+        "Account AS a ON bv.creator_id = a.id"
+      ],
+      "conds": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "bv.ID"
+        },
+        {
+          "name": "baseline_view_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "bv.BaselineViewID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "bv.Version"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "bv.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "bv.CreatorID"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "bv.GroupID"
+        },
+        {
+          "name": "creator",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "a.RealName"
+        }
+      ],
+      "dims": [
+        {
+          "name": "id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "bv.ID"
+        },
+        {
+          "name": "baseline_view_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "BaselineViewID"
+        },
+        {
+          "name": "version",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "Version"
+        },
+        {
+          "name": "created_time",
+          "desc": "",
+          "type": "string",
+          "required": false,
+          "field": "bv.CreatedTime"
+        },
+        {
+          "name": "creator_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "CreatorID"
+        },
+        {
+          "name": "group_id",
+          "desc": "",
+          "type": "number",
+          "required": false,
+          "field": "GroupID"
+        }
+      ]
+    },
+    {
+      "key":"data_label",
+      "desc":"资料标签",
+      "from":"DataLabel",
+      "conds":[
+        {
+          "name":"id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ID"
+        },
+        {
+          "name":"path",
+          "desc":"",
+          "type":"string",
+          "required":false,
+          "field":"Path"
+        }
+      ],
+      "dims":[
+        {
+          "name":"id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ID"
+        },
+        {
+          "name":"name",
+          "desc":"名称",
+          "type":"string",
+          "required":false,
+          "field":"Name"
+        },
+        {
+          "name":"created_time",
+          "desc":"",
+          "type":"string",
+          "required":false,
+          "field":"CreatedTime"
+        },
+        {
+          "name":"parent_id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ParentID"
+        },
+        {
+          "name":"path",
+          "desc":"",
+          "type":"string",
+          "required":false,
+          "field":"Path"
+        },
+        {
+          "name":"source",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"Source"
+        }
+      ]
+    },
+    {
+      "key":"detection_rule",
+      "desc":"检测规则",
+      "from":"DetectionRule",
+      "conds":[
+        {
+          "name":"id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ID"
+        },
+        {
+          "name":"name",
+          "desc":"",
+          "type":"string",
+          "required":false,
+          "field":"Name"
+        },
+        {
+          "name":"external_system_id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ExternalSystemID"
+        }
+      ],
+      "dims":[
+        {
+          "name":"id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ID"
+        },
+        {
+          "name":"name",
+          "desc":"",
+          "type":"string",
+          "required":false,
+          "field":"Name"
+        },
+        {
+          "name":"external_system_id",
+          "desc":"",
+          "type":"number",
+          "required":false,
+          "field":"ExternalSystemID"
+        },
+        {
+          "name":"description",
+          "desc":"描述",
+          "type":"string",
+          "required":false,
+          "field":"Description"
+        },
+        {
+          "name": "t_description",
+          "desc": "描述",
+          "type": "string",
+          "required": false,
+          "field": "TDescription"
+        },
+        {
+          "name": "type",
+          "desc": "描述",
+          "type": "string",
+          "required": false,
+          "field": "Type"
+        }
+      ],
+      "hook": {
+        "handler": "AfterQueryDetectionRule"
+      }
+    }
+  ]
+}

@@ -502,3 +502,13 @@ code {
 .el-button [class*=el-icon-]+span {
     margin-left: 0;
 }
+
+// el-cascader 兼容ie
+.el-cascader__tags .el-tag>span {
+    flex: auto;
+}
+
+.el-cascader-node__postfix {
+    top: 50%;
+    transform: translateY(-50%);
+}

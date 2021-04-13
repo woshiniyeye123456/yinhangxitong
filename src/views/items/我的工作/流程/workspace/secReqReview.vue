@@ -444,6 +444,7 @@ export default {
 
     changeStandards(ids) {
       if (ids) {
+        console.log(ids);
         ids.forEach(id => {
           let item = this.standardsList.find(e => e.id === id);
           let tab = this.editableTabs.find(tab => tab.group_name === item.name);

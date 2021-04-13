@@ -59,7 +59,7 @@
           </el-card>
         </div>
       </template>
-      <popup-group title="参考分组1" :value="params" :standardsList="standardsList" :viewsList="viewsList" :visible.sync="groupDialogVisible"
+      <popup-group title="参考分组" :value="params" :standardsList="standardsList" :viewsList="viewsList" :visible.sync="groupDialogVisible"
         @on-submit="groupSubmit"></popup-group>
       <!-- 参考分组 end -->
       <div class="margin-top-10 text-right" v-show="!readonly">
@@ -277,7 +277,8 @@ export default {
     },
 
     changeStandards(ids) {
-      console.log(ids);
+      // 改为单选  之前多选逻辑不动  依旧是数组
+      ids = [ids];
       if (ids) {
         ids.forEach(id => {
           let item = this.standardsList.find(e => e.id === id);
@@ -292,6 +293,8 @@ export default {
     },
 
     changeViews(ids) {
+      // 改为单选
+      ids = [ids];
       if (ids) {
         ids.forEach(id => {
           let item = this.viewsList.find(e => e.id === id);

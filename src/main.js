@@ -31,6 +31,8 @@ Vue.use(VCharts);
 import echarts from 'echarts';
 // vue-echarts
 import VECharts from 'vue-echarts'
+// non-passive  警告
+import 'default-passive-events'
 import 'echarts/lib/chart/line'
 import 'echarts/lib/component/polar'
 Vue.component('svg-icon', SvgIcon)

@@ -294,7 +294,6 @@ export default {
 
     changeViews(ids) {
       // 改为单选
-      ids = [ids];
       if (ids) {
         ids.forEach(id => {
           let item = this.viewsList.find(e => e.id === id);

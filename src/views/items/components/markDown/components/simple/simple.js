@@ -22,25 +22,27 @@ export default {
             }
             setTimeout(() => {
                 const textarea = this.$refs.textarea;
-                textarea.focus();
-                textarea.addEventListener('keydown', e => {
-                    if (e.keyCode === 83) {
-                        if (e.metaKey || e.ctrlKey) {
-                            e.preventDefault();
-                            this.handleSave();
+                if (textarea) {
+                    textarea.focus();
+                    textarea.addEventListener('keydown', e => {
+                        if (e.keyCode === 83) {
+                            if (e.metaKey || e.ctrlKey) {
+                                e.preventDefault();
+                                this.handleSave();
+                            }
                         }
+                    });
+                    textarea.addEventListener('paste', this.handlePaste);
+                    if (this.autoSave) {
+                        this.timerId = setInterval(() => {
+                            this.handleSave();
+                        }, this.interval);
                     }
-                });
-                textarea.addEventListener('paste', this.handlePaste);
-                if (this.autoSave) {
-                    this.timerId = setInterval(() => {
-                        this.handleSave();
-                    }, this.interval);
+                    this.$emit('on-ready', {
+                        vm: this,
+                        insertContent: this.insertContent
+                    })
                 }
-                this.$emit('on-ready', {
-                    vm: this,
-                    insertContent: this.insertContent
-                })
             }, 20);
         },
 

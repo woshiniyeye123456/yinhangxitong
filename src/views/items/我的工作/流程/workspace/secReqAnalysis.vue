@@ -59,8 +59,8 @@
           </el-card>
         </div>
       </template>
-      <popup-group title="参考分组" :value="params" :standardsList="standardsList" :viewsList="viewsList" :visible.sync="groupDialogVisible"
-        @on-submit="groupSubmit"></popup-group>
+      <popup-group title="参考分组" :value="params" :standardsList="standardsList" :viewsList="viewsList" v-if="groupDialogVisible"
+        :visible.sync="groupDialogVisible" @on-submit="groupSubmit"></popup-group>
       <!-- 参考分组 end -->
       <div class="margin-top-10 text-right" v-show="!readonly">
         <el-button type="default" @click="goBack" size="small">返回</el-button>

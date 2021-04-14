@@ -1,6 +1,6 @@
 <template>
-  <el-dialog :title="title" :append-to-body="true" :visible.sync="dialogVisible" width="550px" :close-on-click-modal="false"
-    @close="closeDialog" class="dialog-default">
+  <el-dialog :title="title" :append-to-body="true" :visible.sync="dialogVisible" v-if="dialogVisible" width="550px"
+    :close-on-click-modal="false" @close="closeDialog" class="dialog-default">
     <el-form label-width="95px" class="default-search" :model="params" :rules="rules" ref="refForm">
       <el-form-item label="参考标准:">
         <el-select v-model="params.referenceStandards" :disabled="referenceStandardsFlag" @change="referenceStandardsFn"
@@ -83,8 +83,6 @@ export default {
   },
   methods: {
     closeDialog() {
-      this.referenceViewsFlag = false;
-      this.referenceStandardsFlag = false;
       this.$emit("update:visible", false);
     },
     referenceStandardsFn() {

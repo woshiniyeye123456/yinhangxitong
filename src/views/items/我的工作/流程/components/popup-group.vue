@@ -1,16 +1,16 @@
 <template>
   <el-dialog :title="title" :append-to-body="true" :visible.sync="dialogVisible" width="550px" :close-on-click-modal="false"
-    class="dialog-default">
+    @close="closeDialog" class="dialog-default">
     <el-form label-width="95px" class="default-search" :model="params" :rules="rules" ref="refForm">
       <el-form-item label="参考标准:">
-        <el-select v-model="params.referenceStandards" placeholder="请选择:参考标准" style="width: 100%" filterable
-          autocomplete="off">
+        <el-select v-model="params.referenceStandards" :disabled="referenceStandardsFlag" @change="referenceStandardsFn"
+          placeholder="请选择:参考标准" style="width: 100%" filterable autocomplete="off">
           <el-option v-for="item in standardsList" :label="item.name" :value="item.id" :key="item.id"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="参考视图:">
-        <el-select v-model="params.referenceViews" placeholder="请选择:参考视图" style="width: 100%" multiple filterable
-          autocomplete="off">
+        <el-select v-model="params.referenceViews" :disabled="referenceViewsFlag" @change="referenceViewsFn"
+          placeholder="请选择:参考视图" style="width: 100%" filterable autocomplete="off">
           <el-option v-for="item in viewsList" :label="item.name" :value="item.id" :key="item.id"></el-option>
         </el-select>
       </el-form-item>
@@ -70,6 +70,8 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      referenceStandardsFlag: false,
+      referenceViewsFlag: false,
       rules: {
         code: [{ required: true, message: "请输入验证码", trigger: "blur" }]
       },
@@ -81,9 +83,18 @@ export default {
   },
   methods: {
     closeDialog() {
+      this.referenceViewsFlag = false;
+      this.referenceStandardsFlag = false;
       this.$emit("update:visible", false);
     },
-
+    referenceStandardsFn() {
+      console.log(this.params.referenceStandards);
+      this.referenceViewsFlag = true;
+    },
+    referenceViewsFn() {
+      console.log(this.params.referenceViews);
+      this.referenceStandardsFlag = true;
+    },
     submit() {
       let params = this.$common.deepClone(this.params);
       this.$refs.refForm.validate(valid => {
@@ -102,8 +113,16 @@ export default {
       // console.log(this.params);
       this.dialogVisible = this.visible;
       if (this.dialogVisible) {
-        this.params.referenceStandards = this.value.referenceStandards;
-        this.params.referenceViews = this.value.referenceViews;
+        this.params.referenceStandards = undefined;
+        this.params.referenceViews = undefined;
+        // this.params.referenceStandards =
+        //   this.value.referenceStandards === undefined
+        //     ? []
+        //     : this.value.referenceStandards;
+        // this.params.referenceViews =
+        //   this.value.referenceViews === undefined
+        //     ? []
+        //     : this.value.referenceViews;
       }
     }
   },

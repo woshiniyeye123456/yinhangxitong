@@ -276,33 +276,28 @@ export default {
       this.removeTab(item.name);
     },
 
-    changeStandards(ids) {
+    changeStandards(id) {
       // 改为单选  之前多选逻辑不动  依旧是数组
-      ids = [ids];
-      if (ids) {
-        ids.forEach(id => {
-          let item = this.standardsList.find(e => e.id === id);
-          let tab = this.editableTabs.find(tab => tab.group_name === item.name);
-          console.log(item);
-          if (!tab) {
-            let save_orgin = true;
-            this.addTab(item.name, item.baselines, save_orgin);
-          }
-        });
+      if (id) {
+        let item = this.standardsList.find(e => e.id === id);
+        let tab = this.editableTabs.find(tab => tab.group_name === item.name);
+        console.log(item);
+        if (!tab) {
+          let save_orgin = true;
+          this.addTab(item.name, item.baselines, save_orgin);
+        }
       }
     },
 
-    changeViews(ids) {
+    changeViews(id) {
       // 改为单选
-      if (ids) {
-        ids.forEach(id => {
-          let item = this.viewsList.find(e => e.id === id);
-          let tab = this.editableTabs.find(tab => tab.group_name === item.name);
-          if (!tab) {
-            let save_orgin = true;
-            this.addTab(item.name, item.baselines, save_orgin);
-          }
-        });
+      if (id) {
+        let item = this.viewsList.find(e => e.id === id);
+        let tab = this.editableTabs.find(tab => tab.group_name === item.name);
+        if (!tab) {
+          let save_orgin = true;
+          this.addTab(item.name, item.baselines, save_orgin);
+        }
       }
     },
 

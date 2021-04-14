@@ -56,7 +56,6 @@ Object.keys(filters).forEach(key => {
 });
 
 
-
 // register globally
 Vue.config.productionTip = false;
 

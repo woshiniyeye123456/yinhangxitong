@@ -145,7 +145,7 @@ export default {
         ],
         filterNameActive: [
           "立即处理",
-          "转移工单"
+          // "转移工单"
           // {
           //   isSwitch: true,                 // isSwitch = true 不会取name, type的数据会执行handler函数的返回值的name,type
           //   // name: ['上架', '下架'],          // 不会在这里取数据
